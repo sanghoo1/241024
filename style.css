@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+/* 흐르는 배너 스타일 */
+.main-slide {
+  margin-top: 60px;
+  --swiper-theme-color: orange;
+  width: 1880px;
+  
+}
+
+.main-slide .swiper .swiper-wrapper .swiper-slide {
+  background: no-repeat 50% / cover;
+  text-indent: -9999px;
+  width: 297px;
+  height: 166px;
+}
+
+
+
+.swiper-wrapper {
+  transition-timing-function: linear;
+  height: 200px;
+  
+  align-items: flex-end;
+}
+
+/* 3D 카드 스타일 */
+body {
+  height: 100%;
+}
+
+.container {
+  width: 297px;
+  height: 166px;
+  transition: transform 200ms;
+}
+
+.card {
+  display: block;
+  width: 297px;
+  height: 166px;
+  border-radius: 9px;
+  background-image: url(./background.jpg);
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  transition-duration: 250ms;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+  perspective: 1000px;
+}
+
+.card-content {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 9px;
+  transition: box-shadow 250ms ease-out;
+}
+
+.light {
+  position: absolute;
+  width: 297px;
+  height: 100%;
+  border-radius: 9px;
+}
+.main-slide .swiper .swiper-wrapper .main-bg1{background-image: url(https://placehold.co/1000x600/FF885B/fff?text=bg1);}
+.main-slide .swiper .swiper-wrapper .main-bg2{background-image: url(https://placehold.co/1000x600/7AB2D3/fff?text=bg2);}
+.main-slide .swiper .swiper-wrapper .main-bg3{background-image: url(https://placehold.co/1000x600/9B7EBD/fff?text=bg3);}
+.main-slide .swiper .swiper-wrapper .main-bg4{background-image: url(https://placehold.co/1000x600/E6C767/fff?text=bg4);}
+.main-slide .swiper .swiper-wrapper .main-bg5{background-image: url(https://placehold.co/1000x600/7AB2D3/fff?text=bg5);}
+.main-slide .swiper .swiper-wrapper .main-bg6{background-image: url(https://placehold.co/1000x600/9B7EBD/fff?text=bg6);}
+.main-slide .swiper .swiper-wrapper .main-bg7{background-image: url(https://placehold.co/1000x600/E6C767/fff?text=bg7);}
+.main-slide .swiper .swiper-wrapper .main-bg8{background-image: url(https://placehold.co/1000x600/FF885B/fff?text=bg8);}
+.main-slide .swiper .swiper-wrapper .main-bg9{background-image: url(https://placehold.co/1000x600/7AB2D3/fff?text=bg9);}
+.main-slide .swiper .swiper-wrapper .main-bg10{background-image: url(https://placehold.co/1000x600/9B7EBD/fff?text=bg10);}
+
+.swiper-wrapper {
+  transition-timing-function: linear;
+}

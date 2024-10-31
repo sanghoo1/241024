@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <title>흐르는배너3D카드</title>
+  <link rel="stylesheet" href="./swiper-bundle.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./swiper-bundle.min.js"></script>
+  
+</head>
+
+<body>
+  <section class="main-slide">
+    <!-- 슬라이드 -->
+    <div class="swiper mySwiper">
+      <ul class="swiper-wrapper">
+        <!-- 카드 슬라이드들 -->
+        <li class="swiper-slide container">
+          <a href="#" class="card main-bg1">
+            <div class="card-content">
+              <div class="light"></div>
+            </div>
+          </a>
+        </li>
+        <li class="swiper-slide container">
+          <a href="#" class="card main-bg2">
+            <div class="card-content">
+              <div class="light"></div>
+            </div>
+          </a>
+        </li>
+        <li class="swiper-slide container">
+          <a href="#" class="card main-bg3">
+            <div class="card-content">
+              <div class="light"></div>
+            </div>
+          </a>
+        </li>
+        <li class="swiper-slide container">
+          <a href="#" class="card main-bg4">
+            <div class="card-content">
+              <div class="light"></div>
+            </div>
+          </a>
+        </li>
+        <li class="swiper-slide container">
+          <a href="#" class="card main-bg5">
+            <div class="card-content">
+              <div class="light"></div>
+            </div>
+          </a>
+        </li>
+        <li class="swiper-slide container">
+          <a href="#" class="card main-bg6">
+            <div class="card-content">
+              <div class="light"></div>
+            </div>
+          </a>
+        </li>
+        <li class="swiper-slide container">
+          <a href="#" class="card main-bg7">
+            <div class="card-content">
+              <div class="light"></div>
+            </div>
+          </a>
+        </li>
+        <li class="swiper-slide container">
+          <a href="#" class="card main-bg8">
+            <div class="card-content">
+              <div class="light"></div>
+            </div>
+          </a>
+        </li>
+        <li class="swiper-slide container">
+          <a href="#" class="card main-bg9">
+            <div class="card-content">
+              <div class="light"></div>
+            </div>
+          </a>
+        </li>
+        <li class="swiper-slide container">
+          <a href="#" class="card main-bg10">
+            <div class="card-content">
+              <div class="light"></div>
+            </div>
+          </a>
+        </li>
+        
+      </ul>
+
+    </div>
+  </section>
+
+  <script>
+    
+    const containers = document.querySelectorAll('.container');
+    const cards = document.querySelectorAll('.card');
+    const lights = document.querySelectorAll('.light');
+
+    let softPageX = 0;
+    let softPageY = 0;
+
+    // Swiper 초기화
+    const swiper = new Swiper(".mySwiper", {
+      autoplay: {
+        delay: 0,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      },
+      speed: 8000,
+      loop: true,
+      slidesPerView: 6,
+      observer: true,
+      observeParents: true,
+      loopedSlides: 10,
+    });
+
+    containers.forEach((container, index) => {
+      let card = cards[index];
+      let light = lights[index];
+
+      container.addEventListener("mousemove", (e) => {
+        // 위치 및 크기 정보 가져오기
+        let { x, y, width, height } = container.getBoundingClientRect();
+
+        // 마우스 좌표값 계산
+        let mousePageX = e.clientX - x;
+        let mousePageY = e.clientY - y;
+
+        // 기준점을 가운데로 설정
+        let centerPageX = width / 2 - mousePageX;
+        let centerPageY = height / 2 - mousePageY;
+
+        // 각도 계산
+        let maxPageX = Math.max(-100, Math.min(100, centerPageX));
+        let maxPageY = Math.max(-100, Math.min(100, centerPageY));
+
+        let anglePageX = maxPageX * 0.3;
+        let anglePageY = maxPageY * 0.3;
+
+        // 부드럽게 설정
+        softPageX += (anglePageX - softPageX) * 0.7;
+        softPageY += (anglePageY - softPageY) * 0.7;
+
+        // 카드 3D 회전 효과
+        card.style.transform = `perspective(1000px) translateY(-20px) rotateX(${softPageY}deg) rotateY(${-softPageX}deg)`;
+
+        // 그림자 및 빛 효과
+        card.style.boxShadow = `${-centerPageX / 10}px ${-centerPageY / 10}px 10px rgba(0, 0, 0, 0.1)`;
+        light.style.backgroundImage = `
+          radial-gradient(
+            circle at ${mousePageX}px ${mousePageY}px, #00000010, #ffffff00, #ffffff50
+          )
+        `;
+      });
+
+      container.addEventListener('mouseleave', () => {
+        // 효과 초기화
+        card.style.transform = '';
+        card.style.boxShadow = '';
+        light.style.backgroundImage = '';
+      });
+    });
+  </script>
+</body>
+
+</html>
